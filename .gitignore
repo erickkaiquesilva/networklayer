@@ -1,0 +1,13 @@
+# Xcode
+*.xcuserstate
+xcuserdata/
+*.xcworkspace
+
+# Build artifacts
+DerivedData/
+build/
+.build/
+
+# iOS specific
+*.ipa
+.DS_Store
