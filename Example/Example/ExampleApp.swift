@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import networklayer
+import NetworkLayer
 
 @main
 struct ExampleApp: App {
@@ -14,6 +14,6 @@ struct ExampleApp: App {
         WindowGroup {
             ContentView()
         }
-        let s = NetworkLayerShared()
+        let s = NetworkLayer()
     }
 }

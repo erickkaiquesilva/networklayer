@@ -1,4 +1,4 @@
-struct NetworkLayerServiceType {
+public struct NetworkLayerServiceType {
 
     let path: String
     let httpMethod: HTTPMethod

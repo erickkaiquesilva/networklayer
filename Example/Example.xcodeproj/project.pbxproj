@@ -14,7 +14,7 @@
 		8CBCA8702D5D3720001C394D /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBCA86F2D5D3720001C394D /* ExampleTests.swift */; };
 		8CBCA87A2D5D3720001C394D /* ExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBCA8792D5D3720001C394D /* ExampleUITests.swift */; };
 		8CBCA87C2D5D3720001C394D /* ExampleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBCA87B2D5D3720001C394D /* ExampleUITestsLaunchTests.swift */; };
-		8CC49D152D5D3874003E8949 /* networklayer in Frameworks */ = {isa = PBXBuildFile; productRef = 8CC49D142D5D3874003E8949 /* networklayer */; };
+		8CFA218C2D5D40F600BA1D08 /* NetworkLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 8CFA218B2D5D40F600BA1D08 /* NetworkLayer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CC49D152D5D3874003E8949 /* networklayer in Frameworks */,
+				8CFA218C2D5D40F600BA1D08 /* NetworkLayer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +80,7 @@
 				8CBCA86E2D5D3720001C394D /* ExampleTests */,
 				8CBCA8782D5D3720001C394D /* ExampleUITests */,
 				8CBCA85C2D5D371F001C394D /* Products */,
+				8CFA218A2D5D40F600BA1D08 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -129,6 +130,13 @@
 			path = ExampleUITests;
 			sourceTree = "<group>";
 		};
+		8CFA218A2D5D40F600BA1D08 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -146,7 +154,7 @@
 			);
 			name = Example;
 			packageProductDependencies = (
-				8CC49D142D5D3874003E8949 /* networklayer */,
+				8CFA218B2D5D40F600BA1D08 /* NetworkLayer */,
 			);
 			productName = Example;
 			productReference = 8CBCA85B2D5D371F001C394D /* Example.app */;
@@ -605,9 +613,10 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8CC49D142D5D3874003E8949 /* networklayer */ = {
+		8CFA218B2D5D40F600BA1D08 /* NetworkLayer */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = networklayer;
+			package = 8CC49D132D5D3874003E8949 /* XCLocalSwiftPackageReference "../Code" */;
+			productName = NetworkLayer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
