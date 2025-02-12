@@ -4,20 +4,20 @@
 import PackageDescription
 
 let package = Package(
-    name: "networklayer",
+    name: "Networklayer",
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "networklayer",
-            targets: ["networklayer"]),
+            name: "Networklayer",
+            targets: ["Networklayer"]),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "networklayer"),
+            name: "Networklayer"),
         .testTarget(
-            name: "networklayerTests",
-            dependencies: ["networklayer"]),
+            name: "NetworklayerTests",
+            dependencies: ["Networklayer"]),
     ]
 )
