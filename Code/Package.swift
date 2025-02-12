@@ -11,6 +11,6 @@ let package = Package(
     targets: [
         .target(
             name: "NetworkLayer",
-            path: "Sources/NetworkLayer")
+            path: "Sources")
     ]
 )

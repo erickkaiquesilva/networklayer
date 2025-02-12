@@ -1,4 +1,5 @@
 enum HTTPMethod: String {
+
     // MARK: Types HTTP Method
     case get = "GET"
     case post = "POST"

@@ -2,7 +2,7 @@ import Foundation
 
 public protocol NetworkLayerRequestType {
     func request(
-        serviceType: Test,
+        serviceType: NetworkLayerServiceType,
         completion: @escaping (Data?, URLResponse?, Error?) -> Void
     )
 }

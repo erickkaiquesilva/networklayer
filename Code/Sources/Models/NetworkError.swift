@@ -1,6 +1,4 @@
-import Foundation
-
-enum NetworkLayerError: Error {
+enum NetworkError: Error {
     case invalidURL
     case noData
     case invalidStatusCode(Int)

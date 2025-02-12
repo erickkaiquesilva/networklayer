@@ -1,8 +1,9 @@
-public struct NetworkLayerServiceType {
+public protocol NetworkLayerServiceType {
 
-    let path: String
-    let httpMethod: HTTPMethod
-    let header: [String: String]?
-    let body: Encodable?
-    let cache: Bool
+    public let path: String { get set }
+    public let httpMethod: HTTPMethod { get set }
+    public let header: [String: String]? { get set }
+    public let body: Encodable? { get set }
+    public let cache: Bool { get set }
 }
+
