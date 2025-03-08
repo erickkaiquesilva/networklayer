@@ -1,4 +1,4 @@
-enum HTTPMethod: String {
+public enum HTTPMethod: String {
 
     // MARK: Types HTTP Method
     case get = "GET"
