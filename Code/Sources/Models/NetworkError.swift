@@ -10,17 +10,17 @@ public enum NetworkError: Error {
     var localizedDescription: String {
         switch self {
         case .invalidURL:
-            return "URL inválida."
+            return "Invalid url."
         case .noData:
-            return "Nenhum dado recebido."
+            return "No data"
         case .invalidStatusCode(let code):
-            return "Código de status inválido: \(code)."
+            return "Status code invalid: \(code)."
         case .failureSaveCache(let path):
-            return "Falha ao tentar salvar cache da request: \(path)"
+            return "Failed to save request cache: \(path)"
         case .failureDecoderCache(let path):
-            return "Falha ao tentar decodar o cache da request: \(path)"
+            return "Failed to try get request cache: \(path)"
         case .expiredCache(let path):
-            return "Cache expirado, serviço: \(path)"
+            return "Failed expired cache the service: \(path)"
         case .custom(let error):
             return error.localizedDescription
         }

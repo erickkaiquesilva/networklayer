@@ -3,13 +3,13 @@ import Foundation
 final class NetworkLayerRequest: NetworkLayerRequestType {
 
     // MARK: - Private properties
-    private let baseURL: URL
+    private let baseURL: String
     private let statusCode: ClosedRange<Int>
     private let urlSession: URLSession
 
     // MARK: Initializer
     init(
-        baseURL: URL,
+        baseURL: String,
         statusCode: ClosedRange<Int>,
         urlSession: URLSession = .shared
     ) {
@@ -35,5 +35,28 @@ final class NetworkLayerRequest: NetworkLayerRequestType {
 }
 
 private extension NetworkLayerRequest {
-    
+
+    func configUrlRequest(_ service: NetworkLayerServiceType) -> (URLRequest?, Error?) {
+        let path: String = baseURL + service.path
+
+        guard let url: URL = URL(string: path) else {
+            return (nil, NetworkError.invalidURL)
+        }
+
+        var urlRequest: URLRequest = .init(url: url)
+
+        urlRequest.httpMethod = service.httpMethod.rawValue
+
+        if let header: [String: String] = service.header {
+            header.forEach { value, key in
+                urlRequest.setValue("\(key)", forHTTPHeaderField: value)
+            }
+        }
+
+        if let body: Encodable = service.body {
+            urlRequest.httpBody = try? JSONEncoder().encode(body)
+        }
+
+        return (urlRequest, nil)
+    }
 }
