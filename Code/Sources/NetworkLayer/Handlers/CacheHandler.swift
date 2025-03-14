@@ -21,7 +21,7 @@ protocol CacheHandlerType: NetworkHandler {
 }
 
 struct CacheHandler: CacheHandlerType {
-    
+
     weak var delegate: (any NetworkLayerDelegate)?
 
     // MARK: - Private properties

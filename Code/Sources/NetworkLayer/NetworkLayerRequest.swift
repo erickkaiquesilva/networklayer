@@ -10,7 +10,7 @@ final class NetworkLayerRequest: NetworkLayerRequestType {
     // MARK: Initializer
     init(
         baseURL: String,
-        statusCode: ClosedRange<Int>,
+        statusCode: ClosedRange<Int> = 200...299,
         urlSession: URLSession = .shared
     ) {
         self.baseURL = baseURL
@@ -30,7 +30,36 @@ final class NetworkLayerRequest: NetworkLayerRequestType {
         service: any NetworkLayerServiceType,
         completion: @escaping (Result<T, any Error>) -> Void
     ) {
-        
+        let result: (urlRequest: URLRequest?, err: Error?) = configUrlRequest(service)
+
+        if let err = result.err {
+            completion(.failure(err))
+        }
+
+        if let urlRequest = result.urlRequest {
+            let task = urlSession.dataTask(with: urlRequest) { data, urlResponse, err in
+                DispatchQueue.global().async {
+                    let result: (response: T?, error: (Error)?) = self.validateUrlSession(
+                        (data, urlResponse, err),
+                        type: T.self
+                    )
+
+                    if let err: Error = result.error {
+                        DispatchQueue.main.async {
+                            completion(.failure(err))
+                        }
+                        return
+                    }
+
+                    if let response: T = result.response {
+                        DispatchQueue.main.async {
+                            completion(.success(response))
+                        }
+                    }
+                }
+            }
+            task.resume()
+        }
     }
 }
 
@@ -58,5 +87,39 @@ private extension NetworkLayerRequest {
         }
 
         return (urlRequest, nil)
+    }
+
+    func validateUrlSession<T: Codable>(
+        _ session: (data: Data?, response: URLResponse?, err: Error?),
+        type: T.Type
+    ) -> (T?, Error?) {
+
+        guard let httpResponse = session.response as? HTTPURLResponse else {
+            return (nil, NetworkError.requestFailed(description: session.err?.localizedDescription ?? "No description"))
+        }
+
+        if !self.statusCode.contains(httpResponse.statusCode) {
+            return (nil, NetworkError.responseUnsuccessful(description: "\(httpResponse.statusCode)"))
+        }
+
+        guard let data = session.data else {
+            return (nil, NetworkError.noData)
+        }
+
+        guard let model: T = self.decodingTask(data: data, to: T.self) else {
+            return (nil, NetworkError.jsonConversionFailure(description: "Error Parcial"))
+        }
+
+        return (model, nil)
+    }
+
+    func decodingTask<T: Decodable>(data: Data, to type: T.Type) -> T? {
+        do {
+            let genericModel = try JSONDecoder().decode(T.self, from: data)
+            return genericModel
+        } catch let err {
+            print(err.localizedDescription)
+            return nil
+        }
     }
 }

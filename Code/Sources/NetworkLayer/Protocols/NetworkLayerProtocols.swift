@@ -5,12 +5,12 @@ public protocol NetworkHandler {
     var delegate: NetworkLayerDelegate? { get set }
 }
 
-public protocol NetworkLayerDecoratorType: NetworkLayerRequestType {
+protocol NetworkLayerDecoratorType: NetworkLayerRequestType {
 
     var network: NetworkLayerRequestType { get set }
 }
 
-public protocol NetworkLayerRequestType {
+protocol NetworkLayerRequestType {
 
     func request(
         service: NetworkLayerServiceType,

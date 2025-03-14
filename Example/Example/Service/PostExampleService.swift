@@ -3,7 +3,7 @@ import NetworkLayer
 struct PostExampleService: NetworkLayerServiceType {
 
     var path: String {
-        "/post/1"
+        "/posts"
     }
 
     var httpMethod: HTTPMethod {
