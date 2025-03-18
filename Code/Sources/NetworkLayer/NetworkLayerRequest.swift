@@ -20,9 +20,34 @@ final class NetworkLayerRequest: NetworkLayerRequestType {
 
     func request(
         service: NetworkLayerServiceType,
-        completion: @escaping (Data?, URLResponse?, Error?) -> Void
+        completion: @escaping (Result<Data, Error>) -> Void
     ) {
-        
+        let result: (urlRequest: URLRequest?, err: Error?) = configUrlRequest(service)
+
+        if let err = result.err {
+            completion(.failure(err))
+        }
+
+        if let urlRequest = result.urlRequest {
+            let task = urlSession.dataTask(with: urlRequest) { data, response, err in
+                DispatchQueue.global().async {
+                    if let data = data {
+                        DispatchQueue.main.async {
+                            completion(.success(data))
+                        }
+                        return
+                    }
+
+                    if let err = err {
+                        DispatchQueue.main.async {
+                            completion(.failure(err))
+                        }
+                        return
+                    }
+                }
+            }
+            task.resume()
+        }
     }
 
     func request<T: Codable>(

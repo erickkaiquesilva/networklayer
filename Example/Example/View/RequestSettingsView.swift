@@ -1,16 +1,19 @@
 import SwiftUI
+import UniformTypeIdentifiers
 
-struct ContentView: View {
+struct RequestSettingsView: View {
 
     // MARK: - Private properties
-    @StateObject private var viewModel: ExampleViewModel
-    @State private var urlString: String = ""
+    @StateObject private var viewModel: RequestSettingsViewModel
+    @State private var baseUrl: String = ""
+    @State private var pathUrl: String = ""
     @State private var newHeaderKey: String = ""
     @State private var newHeaderValue: String = ""
     @State private var customJson: String = ""
+    @State private var showFileImporter: Bool = false
 
     // MARK: - Initializer
-    init(viewModel: ExampleViewModel) {
+    init(viewModel: RequestSettingsViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
 
@@ -31,25 +34,45 @@ struct ContentView: View {
         .padding()
         .navigationTitle("Network Test")
         .toolbar {
-            EditButton()
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {
+                    
+                }) {
+                    Image(systemName: "square.and.arrow.down")
+                        .foregroundColor(.orange)
+                }
+            }
         }
         .alert(isPresented: $viewModel.showError) {
             Alert(
                 title: Text("Error"),
                 message: Text(viewModel.errorMessage),
                 dismissButton: .default(Text("OK")) {
-                    viewModel.showError = false // Reseta o estado ao fechar
+                    viewModel.showError = false
                 }
             )
         }
+        .sheet(isPresented: $viewModel.showResult) {
+            ResponseView(dto: viewModel.resultDto)
+        }
+        .onTapGesture {
+            dismissKeyboard()
+        }
     }
 
+    // MARK: - UIComponents
     private var baseUrlInformationView: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Setting netwrok")
                 .font(.headline)
 
-            TextField("Type a url", text: $urlString)
+            TextField("Base URL", text: $baseUrl)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .keyboardType(.URL)
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
+
+            TextField("Path service", text: $pathUrl)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.URL)
                 .autocapitalization(.none)
@@ -113,20 +136,28 @@ struct ContentView: View {
             Text("Mapping body request")
                 .font(.headline)
 
-            Text("Example: {\"id\": 1, \"name\": \"\"}")
-                .foregroundColor(.gray)
-                .font(.caption)
-            TextEditor(text: $customJson)
-                .frame(height: 100)
-                .overlay(RoundedRectangle(cornerRadius: 8)
-                .stroke(Color.gray))
-                .padding()
+            Button(action: {
+                showFileImporter = true
+            }) {
+                Text(customJson.isEmpty ? "Selecionar arquivo .json" : "Arquivo carregado (\(customJson.count) caracteres)")
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.green)
+                    .cornerRadius(8)
+            }
         }
+        .padding()
+        .fileImporter(
+            isPresented: $showFileImporter,
+            allowedContentTypes: [.json],
+            allowsMultipleSelection: false
+        ) { result in viewModel.handlerFile(result: result) }
     }
 
     private var sendRequestButton: some View {
         Button(action: {
-            viewModel.performRequest(urlString: urlString, bodyRequest: customJson)
+            viewModel.performRequest(baseUrl: baseUrl, pathUrl: pathUrl)
         }) {
             Text(viewModel.isLoading ? "Loading..." : "Send Request")
                 .foregroundColor(.white)
@@ -138,10 +169,20 @@ struct ContentView: View {
         .disabled(viewModel.isLoading)
         .padding()
     }
-}
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView(viewModel: ExampleViewModel())
+    // MARK: - Private methods
+    private func dismissKeyboard() {
+        UIApplication.shared.sendAction(
+            #selector(UIResponder.resignFirstResponder),
+            to: nil,
+            from: nil,
+            for: nil
+        )
     }
 }
+
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView(viewModel: ExampleViewModel())
+//    }
+//}

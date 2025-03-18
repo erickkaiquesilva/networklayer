@@ -13,8 +13,8 @@ struct ExampleApp: App {
 
     var body: some Scene {
         WindowGroup {
-            let viewModel: ExampleViewModel = .init()
-            ContentView(viewModel: viewModel)
+            let viewModel: RequestSettingsViewModel = .init()
+            RequestSettingsView(viewModel: viewModel)
         }
     }
 }

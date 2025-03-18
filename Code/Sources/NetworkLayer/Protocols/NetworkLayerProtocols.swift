@@ -14,7 +14,7 @@ protocol NetworkLayerRequestType {
 
     func request(
         service: NetworkLayerServiceType,
-        completion: @escaping (Data?, URLResponse?, Error?) -> Void
+        completion: @escaping (Result<Data, Error>) -> Void
     )
 
     func request<T: Codable>(

@@ -4,8 +4,8 @@ public protocol NetworkLayerType {
 
     func configDecorators(handlers: [NetworkHandler])
     func request(
-        service: any NetworkLayerServiceType,
-        completion: @escaping (Data?, URLResponse?, (any Error)?) -> Void
+        service: NetworkLayerServiceType,
+        completion: @escaping (Result<Data, Error>) -> Void
     )
     
     func request<T: Codable>(
@@ -43,9 +43,12 @@ extension NetworkLayer: NetworkLayerType {
     }
 
     public func request(
-        service: any NetworkLayerServiceType,
-        completion: @escaping (Data?, URLResponse?, (any Error)?) -> Void
-    ) { }
+        service: NetworkLayerServiceType,
+        completion: @escaping (Result<Data, Error>) -> Void
+    ) {
+        let network: NetworkLayerRequestType = createDecoratorNetwork()
+        network.request(service: service, completion: completion)
+    }
 
     public func request<T: Codable>(
         object: T.Type,
