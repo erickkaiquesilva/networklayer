@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8CB78CCC2D5E537900E1635F /* ExampleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB78CCB2D5E537900E1635F /* ExampleViewModel.swift */; };
 		8CBCA85F2D5D371F001C394D /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBCA85E2D5D371F001C394D /* ExampleApp.swift */; };
 		8CBCA8612D5D371F001C394D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBCA8602D5D371F001C394D /* ContentView.swift */; };
 		8CBCA8632D5D3720001C394D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CBCA8622D5D3720001C394D /* Assets.xcassets */; };
@@ -14,7 +15,7 @@
 		8CBCA8702D5D3720001C394D /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBCA86F2D5D3720001C394D /* ExampleTests.swift */; };
 		8CBCA87A2D5D3720001C394D /* ExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBCA8792D5D3720001C394D /* ExampleUITests.swift */; };
 		8CBCA87C2D5D3720001C394D /* ExampleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBCA87B2D5D3720001C394D /* ExampleUITestsLaunchTests.swift */; };
-		8CC49D152D5D3874003E8949 /* networklayer in Frameworks */ = {isa = PBXBuildFile; productRef = 8CC49D142D5D3874003E8949 /* networklayer */; };
+		8CFA218C2D5D40F600BA1D08 /* NetworkLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 8CFA218B2D5D40F600BA1D08 /* NetworkLayer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8CB78CCB2D5E537900E1635F /* ExampleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleViewModel.swift; sourceTree = "<group>"; };
 		8CBCA85B2D5D371F001C394D /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CBCA85E2D5D371F001C394D /* ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleApp.swift; sourceTree = "<group>"; };
 		8CBCA8602D5D371F001C394D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -52,7 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CC49D152D5D3874003E8949 /* networklayer in Frameworks */,
+				8CFA218C2D5D40F600BA1D08 /* NetworkLayer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +75,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8CB78CCA2D5E536A00E1635F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8CB78CCB2D5E537900E1635F /* ExampleViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		8CBCA8522D5D371F001C394D = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +90,7 @@
 				8CBCA86E2D5D3720001C394D /* ExampleTests */,
 				8CBCA8782D5D3720001C394D /* ExampleUITests */,
 				8CBCA85C2D5D371F001C394D /* Products */,
+				8CFA218A2D5D40F600BA1D08 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,6 +107,7 @@
 		8CBCA85D2D5D371F001C394D /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				8CB78CCA2D5E536A00E1635F /* ViewModel */,
 				8CBCA85E2D5D371F001C394D /* ExampleApp.swift */,
 				8CBCA8602D5D371F001C394D /* ContentView.swift */,
 				8CBCA8622D5D3720001C394D /* Assets.xcassets */,
@@ -129,6 +141,13 @@
 			path = ExampleUITests;
 			sourceTree = "<group>";
 		};
+		8CFA218A2D5D40F600BA1D08 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -146,7 +165,7 @@
 			);
 			name = Example;
 			packageProductDependencies = (
-				8CC49D142D5D3874003E8949 /* networklayer */,
+				8CFA218B2D5D40F600BA1D08 /* NetworkLayer */,
 			);
 			productName = Example;
 			productReference = 8CBCA85B2D5D371F001C394D /* Example.app */;
@@ -266,6 +285,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CBCA8612D5D371F001C394D /* ContentView.swift in Sources */,
+				8CB78CCC2D5E537900E1635F /* ExampleViewModel.swift in Sources */,
 				8CBCA85F2D5D371F001C394D /* ExampleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -605,9 +625,10 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8CC49D142D5D3874003E8949 /* networklayer */ = {
+		8CFA218B2D5D40F600BA1D08 /* NetworkLayer */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = networklayer;
+			package = 8CC49D132D5D3874003E8949 /* XCLocalSwiftPackageReference "../Code" */;
+			productName = NetworkLayer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

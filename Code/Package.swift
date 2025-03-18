@@ -2,15 +2,15 @@
 import PackageDescription
 
 let package = Package(
-    name: "networklayer",
+    name: "NetworkLayer",
     products: [
         .library(
-            name: "networklayer",
-            targets: ["networklayer"]),
+            name: "NetworkLayer",
+            targets: ["NetworkLayer"]),
     ],
     targets: [
         .target(
-            name: "networklayer",
-            path: "Sources/networklayer")
+            name: "NetworkLayer",
+            path: "Sources")
     ]
 )

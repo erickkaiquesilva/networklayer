@@ -1,24 +1,9 @@
-//
-//  ContentView.swift
-//  Example
-//
-//  Created by Magalu on 12/02/25.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var viewModel = ExampleViewModel()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        Text("Config Service")
     }
-}
-
-#Preview {
-    ContentView()
 }
