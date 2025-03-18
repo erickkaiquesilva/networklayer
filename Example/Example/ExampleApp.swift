@@ -17,31 +17,3 @@ struct ExampleApp: App {
         }
     }
 }
-
-struct PostResponse: Codable {
-    let id: Int
-    let title: String
-}
-
-struct ServiceTest: NetworkLayerServiceType {
-
-    var path: String {
-        "/posts"
-    }
-
-    var httpMethod: HTTPMethod {
-        .get
-    }
-
-    var header: [String : String]? {
-        nil
-    }
-    
-    var body: (any Encodable)? {
-        nil
-    }
-
-    var cache: Bool {
-        false
-    }
-}
