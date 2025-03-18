@@ -22,8 +22,8 @@ final class AuthDecorator: NetworkLayerDecoratorType {
     }
 
     func request(
-        service: any NetworkLayerServiceType,
-        completion: @escaping (Data?, URLResponse?, (any Error)?) -> Void
+        service: NetworkLayerServiceType,
+        completion: @escaping (Result<Data, Error>) -> Void
     ) {
         
     }
