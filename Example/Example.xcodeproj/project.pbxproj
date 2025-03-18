@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8CB78CCC2D5E537900E1635F /* ExampleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB78CCB2D5E537900E1635F /* ExampleViewModel.swift */; };
-		8CB78CCF2D5E53D000E1635F /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB78CCE2D5E53D000E1635F /* Post.swift */; };
-		8CB78CD22D5E55F800E1635F /* PostExampleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB78CD12D5E55F800E1635F /* PostExampleService.swift */; };
-		8CB78CD42D5E56E600E1635F /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB78CD32D5E56E600E1635F /* Error.swift */; };
 		8CBCA85F2D5D371F001C394D /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBCA85E2D5D371F001C394D /* ExampleApp.swift */; };
 		8CBCA8612D5D371F001C394D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBCA8602D5D371F001C394D /* ContentView.swift */; };
 		8CBCA8632D5D3720001C394D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CBCA8622D5D3720001C394D /* Assets.xcassets */; };
@@ -40,9 +37,6 @@
 
 /* Begin PBXFileReference section */
 		8CB78CCB2D5E537900E1635F /* ExampleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleViewModel.swift; sourceTree = "<group>"; };
-		8CB78CCE2D5E53D000E1635F /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		8CB78CD12D5E55F800E1635F /* PostExampleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostExampleService.swift; sourceTree = "<group>"; };
-		8CB78CD32D5E56E600E1635F /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		8CBCA85B2D5D371F001C394D /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CBCA85E2D5D371F001C394D /* ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleApp.swift; sourceTree = "<group>"; };
 		8CBCA8602D5D371F001C394D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -89,23 +83,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		8CB78CCD2D5E53C500E1635F /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				8CB78CCE2D5E53D000E1635F /* Post.swift */,
-				8CB78CD32D5E56E600E1635F /* Error.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		8CB78CD02D5E55EE00E1635F /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				8CB78CD12D5E55F800E1635F /* PostExampleService.swift */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
 		8CBCA8522D5D371F001C394D = {
 			isa = PBXGroup;
 			children = (
@@ -130,8 +107,6 @@
 		8CBCA85D2D5D371F001C394D /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				8CB78CD02D5E55EE00E1635F /* Service */,
-				8CB78CCD2D5E53C500E1635F /* Models */,
 				8CB78CCA2D5E536A00E1635F /* ViewModel */,
 				8CBCA85E2D5D371F001C394D /* ExampleApp.swift */,
 				8CBCA8602D5D371F001C394D /* ContentView.swift */,
@@ -312,9 +287,6 @@
 				8CBCA8612D5D371F001C394D /* ContentView.swift in Sources */,
 				8CB78CCC2D5E537900E1635F /* ExampleViewModel.swift in Sources */,
 				8CBCA85F2D5D371F001C394D /* ExampleApp.swift in Sources */,
-				8CB78CD22D5E55F800E1635F /* PostExampleService.swift in Sources */,
-				8CB78CD42D5E56E600E1635F /* Error.swift in Sources */,
-				8CB78CCF2D5E53D000E1635F /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
