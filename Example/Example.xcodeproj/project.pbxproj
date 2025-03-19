@@ -17,6 +17,7 @@
 		8C45D2AB2D89A535000E1FF1 /* StringCodingKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C45D2AA2D89A535000E1FF1 /* StringCodingKey.swift */; };
 		8C45D2AD2D89A53E000E1FF1 /* AnyEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C45D2AC2D89A53E000E1FF1 /* AnyEncodable.swift */; };
 		8C45D2B02D89A97B000E1FF1 /* NetworkFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C45D2AF2D89A97B000E1FF1 /* NetworkFactory.swift */; };
+		8C87B8032D8B7D8900582C48 /* NetworkLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 8C87B8022D8B7D8900582C48 /* NetworkLayer */; };
 		8CB78CCC2D5E537900E1635F /* RequestSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB78CCB2D5E537900E1635F /* RequestSettingsViewModel.swift */; };
 		8CBCA85F2D5D371F001C394D /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBCA85E2D5D371F001C394D /* ExampleApp.swift */; };
 		8CBCA8612D5D371F001C394D /* RequestSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBCA8602D5D371F001C394D /* RequestSettingsView.swift */; };
@@ -25,7 +26,6 @@
 		8CBCA8702D5D3720001C394D /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBCA86F2D5D3720001C394D /* ExampleTests.swift */; };
 		8CBCA87A2D5D3720001C394D /* ExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBCA8792D5D3720001C394D /* ExampleUITests.swift */; };
 		8CBCA87C2D5D3720001C394D /* ExampleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBCA87B2D5D3720001C394D /* ExampleUITestsLaunchTests.swift */; };
-		8CFA218C2D5D40F600BA1D08 /* NetworkLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 8CFA218B2D5D40F600BA1D08 /* NetworkLayer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CFA218C2D5D40F600BA1D08 /* NetworkLayer in Frameworks */,
+				8C87B8032D8B7D8900582C48 /* NetworkLayer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,7 +243,7 @@
 			);
 			name = Example;
 			packageProductDependencies = (
-				8CFA218B2D5D40F600BA1D08 /* NetworkLayer */,
+				8C87B8022D8B7D8900582C48 /* NetworkLayer */,
 			);
 			productName = Example;
 			productReference = 8CBCA85B2D5D371F001C394D /* Example.app */;
@@ -318,7 +318,7 @@
 			);
 			mainGroup = 8CBCA8522D5D371F001C394D;
 			packageReferences = (
-				8CC49D132D5D3874003E8949 /* XCLocalSwiftPackageReference "../Code" */,
+				8C87B8012D8B7D8900582C48 /* XCLocalSwiftPackageReference "../../networklayer" */,
 			);
 			productRefGroup = 8CBCA85C2D5D371F001C394D /* Products */;
 			projectDirPath = "";
@@ -706,16 +706,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		8CC49D132D5D3874003E8949 /* XCLocalSwiftPackageReference "../Code" */ = {
+		8C87B8012D8B7D8900582C48 /* XCLocalSwiftPackageReference "../../networklayer" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = ../Code;
+			relativePath = ../../networklayer;
 		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8CFA218B2D5D40F600BA1D08 /* NetworkLayer */ = {
+		8C87B8022D8B7D8900582C48 /* NetworkLayer */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8CC49D132D5D3874003E8949 /* XCLocalSwiftPackageReference "../Code" */;
 			productName = NetworkLayer;
 		};
 /* End XCSwiftPackageProductDependency section */
