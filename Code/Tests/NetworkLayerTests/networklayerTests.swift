@@ -1,5 +1,4 @@
 import XCTest
-@testable import networklayer
 
 final class networklayerTests: XCTestCase {
     func testExample() throws {

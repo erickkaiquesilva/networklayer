@@ -3,6 +3,10 @@ import PackageDescription
 
 let package = Package(
     name: "NetworkLayer",
+    platforms: [
+        .iOS(.v13),
+        .macOS(.v10_15)
+    ],
     products: [
         .library(
             name: "NetworkLayer",
@@ -11,6 +15,10 @@ let package = Package(
     targets: [
         .target(
             name: "NetworkLayer",
-            path: "Sources")
+            path: "Sources"),
+        .testTarget(
+            name: "NetworkLayerTests",
+            dependencies: ["NetworkLayer"]
+        )
     ]
 )

@@ -64,7 +64,8 @@ final class RequestSettingsViewModel: ObservableObject {
             isLoading = true
             self.baseUrl = baseUrl
             self.pathUrl = pathUrl
-            let network: NetworkLayer = NetworkFactory.createNetwork(baseUrl: baseUrl)
+            let network: NetworkLayer = NetworkFactory.createNetwork(baseUrl: baseUrl, delegate: self)
+//            network.setDelegate(delegate: self)
             let service: NetworkLayerServiceType = NetworkFactory.createServiceNetwork(
                 path: pathUrl,
                 method: selectedMethod,
@@ -139,5 +140,15 @@ private extension RequestSettingsViewModel {
             return header
         }
         return nil
+    }
+}
+
+extension RequestSettingsViewModel: NetworkLayerDelegate {
+    func authenticate(completion: @escaping () -> Void?) {
+        
+    }
+    
+    func loggerNetwork(log: LoggerResponse) {
+        print(log)
     }
 }
