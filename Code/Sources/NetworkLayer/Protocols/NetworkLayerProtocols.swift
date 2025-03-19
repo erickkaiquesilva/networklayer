@@ -27,4 +27,5 @@ protocol NetworkLayerRequestType {
 public protocol NetworkLayerDelegate: AnyObject {
 
     func authenticate(completion: @escaping () -> Void?)
+    func loggerNetwork(log: LoggerResponse)
 }

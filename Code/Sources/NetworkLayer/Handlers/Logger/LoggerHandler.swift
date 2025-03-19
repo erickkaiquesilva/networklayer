@@ -7,21 +7,13 @@
 
 import Foundation
 
-protocol LoggerHandlerType: NetworkHandler {
-
-    func logRequest(
-        service: NetworkLayerServiceType,
-        result: Result<Data, Error>
-    )
-    func logRequest<T: Codable>(
-        service: NetworkLayerServiceType,
-        result: Result<T, Error>
-    )
-}
-
 struct LoggerHandler: LoggerHandlerType {
 
     weak var delegate: (any NetworkLayerDelegate)?
+
+    init(delegate: (any NetworkLayerDelegate)?) {
+        self.delegate = delegate
+    }
 
     func logRequest(
         service: NetworkLayerServiceType,
@@ -38,7 +30,13 @@ struct LoggerHandler: LoggerHandlerType {
         case .failure(let err):
             logMessage += err.localizedDescription
         }
-        print(logMessage)
+        logMessage += "----------------------------------------"
+
+        createLogResponse(
+            logType: .message,
+            title: "TRACE REQUEST",
+            message: logMessage
+        )
     }
     
     func logRequest<T: Codable>(
@@ -56,7 +54,13 @@ struct LoggerHandler: LoggerHandlerType {
         case .failure(let err):
             logMessage += err.localizedDescription
         }
-        print(logMessage)
+        logMessage += "----------------------------------------"
+
+        createLogResponse(
+            logType: .message,
+            title: "TRACE REQUEST",
+            message: logMessage
+        )
     }
 
     // MARK: - Private methods
@@ -75,9 +79,29 @@ struct LoggerHandler: LoggerHandlerType {
         }
         return logMessage
     }
+
     private func formattedTimestamp() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return formatter.string(from: Date())
     }
+
+    private func createLogResponse(logType: LoggerType, title: String, message: String) {
+        let response: LoggerResponse = .init(type: logType, title: title, message: message)
+        delegate?.loggerNetwork(log: response)
+    }
+}
+
+public enum LoggerType: String {
+
+    case warning = "WARNING"
+    case error = "ERROR"
+    case message = "MESSAGE"
+}
+
+public struct LoggerResponse {
+
+    let type: LoggerType
+    let title: String
+    let message: String
 }

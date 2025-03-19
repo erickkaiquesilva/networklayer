@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CacheHandlerType: NetworkHandler {
-    
+
     func getCachedResponse<T: Decodable>(
         for service: NetworkLayerServiceType,
         response: T.Type

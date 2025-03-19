@@ -10,8 +10,8 @@ import NetworkLayer
 
 struct NetworkFactory {
 
-    static func createNetwork(baseUrl: String) -> NetworkLayer {
-        return NetworkLayer(baseUrl: baseUrl)
+    static func createNetwork(baseUrl: String, delegate: NetworkLayerDelegate) -> NetworkLayer {
+        return NetworkLayer(baseUrl: baseUrl, delegate: delegate)
     }
 
     static func createServiceNetwork(

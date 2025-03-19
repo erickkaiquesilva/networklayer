@@ -1,35 +1,35 @@
 import Foundation
 
-final class LoggerDecorator: NetworkLayerDecoratorType {
-
-    // MARK: - Public properties
-    var network: NetworkLayerRequestType
+final class LoggerDecorator: NetworkLayerDecorator {
 
     // MARK: - Private properties
     private let handler: LoggerHandlerType
 
     // MARK: Initializer
-    init(network: NetworkLayerRequestType, handler: LoggerHandlerType = LoggerHandler()) {
-        self.network = network
+    init(network: NetworkLayerRequestType, handler: LoggerHandlerType) {
         self.handler = handler
+        super.init(network: network)
     }
 
-    func request(
+    override func request(
         service: any NetworkLayerServiceType,
         completion: @escaping (Result<Data, Error>) -> Void
     ) {
-        network.request(service: service) { [weak self] result in
-            self?.handler.logRequest(service: service, result: result)
+        print(handler)
+        super.request(service: service) { result in
+            print(self.handler)
+            self.handler.logRequest(service: service, result: result)
+            print(result)
             completion(result)
         }
     }
 
-    func request<T: Codable>(
+    override func request<T: Codable>(
         object: T.Type,
         service: any NetworkLayerServiceType,
         completion: @escaping (Result<T, Error>) -> Void
     ) {
-        network.request(object: object, service: service) { [weak self] result in
+        super.request(object: object, service: service) { [weak self] result in
             self?.handler.logRequest(service: service, result: result)
             completion(result)
         }
