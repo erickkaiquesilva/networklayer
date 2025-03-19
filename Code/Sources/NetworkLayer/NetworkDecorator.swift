@@ -11,7 +11,7 @@ class NetworkLayerDecorator: NetworkLayerRequestType {
     }
 
     func request(
-        service: NetworkLayerServiceType,
+        service: any NetworkLayerServiceType,
         completion: @escaping (Result<Data, Error>) -> Void
     ) {
         network.request(service: service, completion: completion)

@@ -1,10 +1,3 @@
-//
-//  File.swift
-//  NetworkLayer
-//
-//  Created by Erick Silva on 23/02/25.
-//
-
 import Foundation
 
 final class AuthDecorator: NetworkLayerDecoratorType {
@@ -22,7 +15,7 @@ final class AuthDecorator: NetworkLayerDecoratorType {
     }
 
     func request(
-        service: NetworkLayerServiceType,
+        service: any NetworkLayerServiceType,
         completion: @escaping (Result<Data, Error>) -> Void
     ) {
         
